@@ -11,6 +11,8 @@
 - Kotlin 1.8.22
 - JVM 17.0.2
 - Gradle 8.1.1
+  - checkstyle
+  - jacoco
 - Spring Boot 3.1.2
   - Spring Data Jpa, QueryDsl
   - Spring Security
