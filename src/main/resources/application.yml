@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    default: local
+  application:
+    title: PodongPodong
+    version: 1.0.0
+  banner:
+    location: classpath:/app-banner.dat
