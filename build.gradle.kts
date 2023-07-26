@@ -41,6 +41,11 @@ configurations {
     }
 }
 
+configurations.forEach {
+    it.exclude(group = "org.springframework.boot", module = "spring-boot-starter-logging")
+    it.exclude(group = "org.apache.logging.log4j", module = "log4j-to-slf4j")
+}
+
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
@@ -61,6 +66,12 @@ dependencies {
     // kotlin
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+    // AOP
+    implementation("org.springframework.boot:spring-boot-starter-aop:3.1.0")
+
+    // Log
+    implementation("org.springframework.boot:spring-boot-starter-log4j2")
 
     // Query Dsl
     implementation("com.querydsl:querydsl-jpa:5.0.0:jakarta")
