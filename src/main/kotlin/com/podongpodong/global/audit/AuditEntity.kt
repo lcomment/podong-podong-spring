@@ -8,7 +8,7 @@ import jakarta.persistence.Embeddable
 import java.time.LocalDateTime
 
 @Embeddable
-open class AuditEntity {
+class AuditEntity {
     @CreatedDate
     var createdAt: LocalDateTime = LocalDateTime.now()
         protected set
