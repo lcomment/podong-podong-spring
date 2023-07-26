@@ -1,5 +1,6 @@
 package com.podongpodong.global.config.security
 
+import com.podongpodong.global.jwt.filter.JwtAuthenticationFilter
 import com.podongpodong.global.oauth2.service.CustomOAuth2UserService
 import com.podongpodong.global.oauth2.service.CustomOidcUserService
 
@@ -14,6 +15,8 @@ import org.springframework.security.config.annotation.web.configurers.oauth2.cli
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher
 
 
 @Configuration
@@ -21,7 +24,8 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 class SecurityConfig(
     val oAuth2UserService: CustomOAuth2UserService,
     val oidcUserService: CustomOidcUserService,
-    val successHandler: AuthenticationSuccessHandler
+    val successHandler: AuthenticationSuccessHandler,
+    val jwtAuthenticationFilter: JwtAuthenticationFilter
 ) {
     @Bean
     fun oauth2SecurityFilterChain(http: HttpSecurity): SecurityFilterChain {
@@ -33,6 +37,10 @@ class SecurityConfig(
             .sessionManagement { setSessionManagement() }
             .authorizeHttpRequests(setAuthorizeHttpRequests())
             .oauth2Login(setOAuth2Config())
+            .addFilterBefore(
+                jwtAuthenticationFilter,
+                UsernamePasswordAuthenticationFilter::class.java
+            )
             .build()
     }
 
@@ -46,9 +54,12 @@ class SecurityConfig(
     private fun setAuthorizeHttpRequests(): Customizer<AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry> =
         Customizer { requests ->
             requests
-                .requestMatchers("/auth2/**", "/login/**").permitAll()
-                .requestMatchers("/docs/api-docs.html").permitAll()
-                .requestMatchers("/api/v1/**").hasRole("MEMBER")
+                .requestMatchers(
+                    AntPathRequestMatcher("/auth2/**"),
+                    AntPathRequestMatcher("/login/**")
+                ).permitAll()
+                .requestMatchers(AntPathRequestMatcher("/docs/api-docs.html")).permitAll()
+                .requestMatchers(AntPathRequestMatcher("/api/v1/**")).hasRole("MEMBER")
                 .anyRequest().authenticated()
         }
 
