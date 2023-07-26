@@ -15,6 +15,7 @@ class User(
     email: String?
 ) {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null
 
     @Enumerated(EnumType.STRING)
