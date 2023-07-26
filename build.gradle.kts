@@ -24,6 +24,12 @@ group = "com.podong-podong"
 version = "1.0.0-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
+allOpen {
+    // Spring Boot 3.0.0
+    annotation("jakarta.persistence.Entity")
+    annotation("jakarta.persistence.MappedSuperclass")
+    annotation("jakarta.persistence.Embeddable")
+}
 
 repositories {
     mavenCentral()
