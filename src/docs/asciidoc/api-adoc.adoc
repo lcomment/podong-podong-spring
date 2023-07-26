@@ -1,0 +1,97 @@
+= PodongPodong API
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels:2
+:sectlinks:
+
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+
+== Host
+
+==== Header
+
+|===
+|Key|Value|Description|Optional
+
+|`+Authorization+`
+|`+access token+`
+|액세스 토큰
+|O
+
+|`+Refresh+`
+|`+refresh token+`
+|리프레시 토큰
+|O
+|===
+
+== Social Login
+
+=== Google
+
+==== Request
+
+url : http://127.0.0.1:8080/auth2/authorize/google
+
+===== Response
+
+|===
+|Path|Type|Description
+
+|`+status+`
+|`+String+`
+|응답 코드
+
+|`+message+`
+|`+String+`
+|응답 메시지
+
+|`+data+`
+|`+Object+`
+|응답 데이터
+
+|`+data.accessToken+`
+|`+String+`
+|엑세스 토큰
+
+|`+data.refreshToken+`
+|`+String+`
+|리프레시 토큰
+
+|===
+
+=== Kakao
+
+==== Request
+
+url : http://127.0.0.1:8080/auth2/authorize/kakao
+
+===== Response
+
+|===
+|Path|Type|Description
+
+|`+status+`
+|`+String+`
+|응답 코드
+
+|`+message+`
+|`+String+`
+|응답 메시지
+
+|`+data+`
+|`+Object+`
+|응답 데이터
+
+|`+data.accessToken+`
+|`+String+`
+|엑세스 토큰
+
+|`+data.refreshToken+`
+|`+String+`
+|리프레시 토큰
+
+|===

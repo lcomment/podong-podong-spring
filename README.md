@@ -11,11 +11,11 @@
 - Kotlin 1.8.22
 - JVM 17.0.2
 - Gradle 8.1.1
-  - checkstyle
+  - checkstyle (`google`)
   - jacoco
 - Spring Boot 3.1.2
   - Spring Data Jpa, QueryDsl
-  - Spring Security
+  - Spring Security, OAuth2.0
   - Spring Rest Docs
   - WebSocket, Netty
   - JUnit, Mockito
