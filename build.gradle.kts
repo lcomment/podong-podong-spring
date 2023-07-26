@@ -174,6 +174,7 @@ tasks.withType<JacocoCoverageVerification> {
 
             excludes = listOf(
                 "com.podongpodong.ApplicationKt",
+                "com.podongpodong.PodongPodongApplication",
                 "com.podongpodong.global.**",
                 "com.podongpodong.domain.**.dto.**",
                 "com.podongpodong.domain.**.repository.**",
