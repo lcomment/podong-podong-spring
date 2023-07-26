@@ -5,6 +5,7 @@ import com.podongpodong.domain.user.repository.UserRepository
 import com.podongpodong.global.oauth2.dto.OAuth2Request
 
 import jakarta.persistence.EntityNotFoundException
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -25,7 +26,12 @@ class UserService(
     }
 
     @Transactional(readOnly = true)
-    fun findByProviderId(providerId: String): User {
-        return userRepository.findByProviderId(providerId) ?: throw EntityNotFoundException();
+    fun findById(id: Long): User {
+        return userRepository.findByIdOrNull(id) ?: throw EntityNotFoundException()
+    }
+
+    @Transactional(readOnly = true)
+    fun findByProviderId(providerId: String): User? {
+        return userRepository.findByProviderId(providerId)
     }
 }
