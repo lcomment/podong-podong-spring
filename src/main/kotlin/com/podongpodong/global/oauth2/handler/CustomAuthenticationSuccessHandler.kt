@@ -1,6 +1,7 @@
 package com.podongpodong.global.oauth2.handler
 
 import com.fasterxml.jackson.databind.ObjectMapper
+
 import com.podongpodong.global.common.ApiResponse
 import com.podongpodong.global.common.createSuccessWithData
 import com.podongpodong.global.jwt.dto.JwtToken
@@ -27,6 +28,7 @@ class CustomAuthenticationSuccessHandler(
     ) {
         val principalUser: PrincipalUser = authentication.principal as PrincipalUser
         val jwtToken: JwtToken = jwtProvider.createJwtToken(principalUser)
+
         val apiResponse: ApiResponse<JwtToken> = createSuccessWithData(
             AuthResponse.SUCCESS_GENERATE_TOKEN.msg,
             jwtToken
