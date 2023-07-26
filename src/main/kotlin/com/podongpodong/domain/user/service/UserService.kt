@@ -15,9 +15,7 @@ class UserService(
 ) {
     @Transactional
     fun saveIfNewUser(oAuth2Request: OAuth2Request): User {
-        return findByProviderId(oAuth2Request.providerId).run {
-            save(oAuth2Request)
-        }
+        return findByProviderId(oAuth2Request.providerId) ?: save(oAuth2Request)
     }
 
     @Transactional
@@ -27,7 +25,7 @@ class UserService(
 
     @Transactional(readOnly = true)
     fun findById(id: Long): User {
-        return userRepository.findByIdOrNull(id) ?: throw EntityNotFoundException()
+        return userRepository.findByIdOrNull(id) ?: throw NullPointerException()
     }
 
     @Transactional(readOnly = true)

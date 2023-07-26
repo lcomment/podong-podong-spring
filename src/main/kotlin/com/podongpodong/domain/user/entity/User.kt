@@ -3,6 +3,7 @@ package com.podongpodong.domain.user.entity
 import com.podongpodong.domain.user.entity.enums.Provider
 import com.podongpodong.domain.user.entity.enums.Role
 import com.podongpodong.global.audit.AuditEntity
+
 import jakarta.persistence.*
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
