@@ -1,7 +1,6 @@
 package com.podongpodong.global.common.resovler
 
 import com.podongpodong.domain.user.entity.User
-import com.podongpodong.domain.user.service.UserService
 import com.podongpodong.global.common.annotation.AuthorizedUser
 import com.podongpodong.global.oauth2.dto.PrincipalUser
 
@@ -15,9 +14,7 @@ import org.springframework.web.method.support.ModelAndViewContainer
 
 
 @Component
-class AuthorizedUserResolver(
-    private val userService: UserService
-) : HandlerMethodArgumentResolver {
+class AuthorizedUserResolver: HandlerMethodArgumentResolver {
     override fun supportsParameter(parameter: MethodParameter): Boolean {
         return parameter.hasParameterAnnotation(AuthorizedUser::class.java)
                 && User::class.java.isAssignableFrom(parameter.parameterType)
