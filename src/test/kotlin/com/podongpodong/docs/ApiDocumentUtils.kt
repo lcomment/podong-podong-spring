@@ -4,7 +4,7 @@ import org.springframework.restdocs.operation.preprocess.OperationRequestPreproc
 import org.springframework.restdocs.operation.preprocess.OperationResponsePreprocessor
 import org.springframework.restdocs.operation.preprocess.Preprocessors.*
 
-interface ApiDocumentUtils {
+object ApiDocumentUtils {
     fun getDocumentRequest(): OperationRequestPreprocessor {
         return preprocessRequest(prettyPrint())
     }
