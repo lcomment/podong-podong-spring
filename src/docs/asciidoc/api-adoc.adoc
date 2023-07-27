@@ -10,24 +10,6 @@ ifndef::snippets[]
 :snippets: ./build/generated-snippets
 endif::[]
 
-== Host
-
-==== Header
-
-|===
-|Key|Value|Description|Optional
-
-|`+Authorization+`
-|`+access token+`
-|액세스 토큰
-|O
-
-|`+Refresh+`
-|`+refresh token+`
-|리프레시 토큰
-|O
-|===
-
 == Social Login
 
 === Google
@@ -95,3 +77,55 @@ url : http://127.0.0.1:8080/auth2/authorize/kakao
 |리프레시 토큰
 
 |===
+
+== Profile
+
+=== add
+
+==== Request
+
+include::{snippets}/profile-add/http-request.adoc[]
+===== 1. header
+
+include::{snippets}/profile-add/request-headers.adoc[]
+
+===== 2. body
+
+include::{snippets}/profile-add/request-fields.adoc[]
+
+==== Response
+
+include::{snippets}/profile-add/http-response.adoc[]
+include::{snippets}/profile-add/response-fields.adoc[]
+
+=== detail
+
+==== Request
+
+include::{snippets}/profile-detail/http-request.adoc[]
+===== 1. header
+
+include::{snippets}/profile-detail/request-headers.adoc[]
+
+==== Response
+
+include::{snippets}/profile-detail/http-response.adoc[]
+include::{snippets}/profile-detail/response-fields.adoc[]
+
+=== modify
+
+==== Request
+
+include::{snippets}/profile-modify/http-request.adoc[]
+===== 1. header
+
+include::{snippets}/profile-modify/request-headers.adoc[]
+
+===== 2. body
+
+include::{snippets}/profile-modify/request-fields.adoc[]
+
+==== Response
+
+include::{snippets}/profile-modify/http-response.adoc[]
+include::{snippets}/profile-modify/response-fields.adoc[]
