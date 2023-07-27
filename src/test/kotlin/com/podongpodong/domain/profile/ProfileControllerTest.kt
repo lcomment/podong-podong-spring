@@ -135,6 +135,10 @@ class ProfileControllerTest : RestDocsTest() {
                     "profile-detail",
                     getDocumentRequest(),
                     getDocumentResponse(),
+                    requestHeaders(
+                        headerWithName("Authorization").description("access token"),
+                        headerWithName("Refresh").description("refresh token")
+                    ),
                     responseFields(
                         fieldWithPath("status").type(JsonFieldType.STRING).description("응답 상태"),
                         fieldWithPath("message").type(JsonFieldType.STRING).description("응답 메시지"),
@@ -151,7 +155,7 @@ class ProfileControllerTest : RestDocsTest() {
     }
 
     @Test
-    fun `프로필을 수한다`() {
+    fun `프로필을 수정한다`() {
         // given
         given(profileService.update(any(ProfileUpdateRequest::class.java), any(User::class.java)))
             .willReturn(profile)
