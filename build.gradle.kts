@@ -73,6 +73,10 @@ dependencies {
     // Log
     implementation("org.springframework.boot:spring-boot-starter-log4j2")
 
+    // WebSocket
+    implementation("org.springframework.boot:spring-boot-starter-websocket:3.1.2")
+    implementation("org.webjars:stomp-websocket:2.3.4")
+
     // Query Dsl
     implementation("com.querydsl:querydsl-jpa:5.0.0:jakarta")
     kapt("com.querydsl:querydsl-apt:5.0.0:jakarta")
