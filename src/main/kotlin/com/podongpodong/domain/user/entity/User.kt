@@ -1,5 +1,6 @@
 package com.podongpodong.domain.user.entity
 
+import com.podongpodong.domain.chat.entity.ChatRoom
 import com.podongpodong.domain.user.entity.enums.Provider
 import com.podongpodong.domain.user.entity.enums.Role
 import com.podongpodong.global.audit.AuditEntity
@@ -32,6 +33,10 @@ class User(
     @Column(name = "email")
     val email: String? = email
 
+    @ManyToOne
+    @JoinColumn(name = "code")
+    var chatRoom: ChatRoom? = null
+
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "user_role", joinColumns = [JoinColumn(name = "user_id")])
@@ -45,5 +50,9 @@ class User(
         return role.stream()
             .map { SimpleGrantedAuthority(it.name) }
             .toList()
+    }
+
+    fun updateRoom(chatRoom: ChatRoom) {
+        this.chatRoom = chatRoom
     }
 }
